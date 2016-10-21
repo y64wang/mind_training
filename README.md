@@ -1,2 +1,3 @@
 # mind_training
-tools for mind training.
+
+some tools for mind training.
