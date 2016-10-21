@@ -20,11 +20,11 @@ def main(argv):
    try:
       opts, args = getopt.getopt(argv,"hn:s")
    except getopt.GetoptError:
-      print 'concentration-grid.py -n <num> -s'
+      print 'usage: schulte_table.py -n <num> -s'
       sys.exit(2)
    for opt, arg in opts:
       if opt == '-h':
-         print 'concentration-grid.py -n <num> -s'
+         print 'usage: schulte_table.py -n <num> -s'
          sys.exit()
       elif opt in ("-n"):
          num = int(arg)
