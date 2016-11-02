@@ -8,27 +8,21 @@ def print_arithm(num):
   myrandoms = [random.randrange(0,num,1) for _ in range (120)]
   myops = [random.randint(0,1) for _ in range (60)]
 
-  #myarithm = (map(lambda idx: "%d "%myrandoms[idx] + ("+" if myops[idx/2]==0 else "-") + " %d"%myrandoms[idx+1], range(0, len(myrandoms), 2)))
   for idx in range(0, len(myrandoms), 2):
+    x = myrandoms[idx]
+    y = myrandoms[idx+1]
     if myops[idx/2] == 0:
-      print "%d "%myrandoms[idx] + "+" + " %d"%myrandoms[idx+1] + " =\t\t",
+      if  x + y > num:
+        y = random.randint(0, num - x)
+      print "%2d "%x + " +" + " %2d"%y + " =\t",
     else:
-      if myrandoms[idx] >= myrandoms[idx+1]:
-        x = myrandoms[idx]
-        y = myrandoms[idx+1]
-      else:
-        x = myrandoms[idx+1]
+      if myrandoms[idx] < myrandoms[idx+1]:
+        x = myrandoms[idx + 1]
         y = myrandoms[idx]
-
-      print "%d "%x + "-" + " %d"%y + " =\t\t",
+      print "%2d "%x + " -" + " %2d"%y + " =\t",
 
     if (idx/2 + 1)%3 == 0:
       print ""
-
-
-
-  #print "\n\n".join(map(lambda idx:'\t'.join(map(lambda item: '%02d'%item if (not skip) or (item != skip_num) else "  ", its[idx:idx+num])), range(0, len(its), num)))
-
 
 def main(argv):
   num = 10
