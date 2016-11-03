@@ -1,0 +1,26 @@
+[gitreview]
+	username = y64wang
+[user]
+	name = Yong Wang
+	email = yong.9.wang@nokia.com
+[core]
+	autocrlf = input
+	editor = nano
+	pager = less -x4
+	whitespace = blank-at-eol,space-before-tab,blank-at-eof,trailing-space
+[diff]
+	tool = bc3
+[difftool "bc3"]
+	trustExitCode = true
+[merge]
+	tool = bc3
+[mergetool "bc3"]
+	trustExitCode = true
+[alias]
+	lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	his = log --pretty=format:\"%C(auto)%h %ad | %s%d %Cblue[%an]\" --graph --date=short --all
+	cat = show --stat
