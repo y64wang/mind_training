@@ -6,6 +6,9 @@ import random
 def print_arithm(num):
 
   myrandoms = [random.randrange(0,num,1) for _ in range (120)]
+  while myrandoms.count(0) >= 9:
+    myrandoms = [random.randrange(0,num,1) for _ in range (120)]
+
   myops = [random.randint(0,1) for _ in range (60)]
 
   for idx in range(0, len(myrandoms), 2):
