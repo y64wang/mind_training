@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Matlab 2011B
+GenericName=Matlab 2011B
+Comment=Matlab 2011B
+Exec=/opt/matlab/x86_64/2011b/bin/matlab -desktop
+Icon=/usr/share/icons/matlab.png
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Development;
+Version=1.0
+X-Desktop-File-Install-Version=0.22

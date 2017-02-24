@@ -1,0 +1,12 @@
+Host 192.168.255.1
+      user                  toor4nsn
+      IdentityFile          ~/.ssh/id_rsa_toor4nsn
+      CheckHostIP           no
+      StrictHostKeyChecking no
+
+
+Host 10.68.160.* 
+      user                  xenabts_c_es
+      IdentityFile          ~/.ssh/id_rsa_xenaLab
+      CheckHostIP           no
+      StrictHostKeyChecking no

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Beyond Compare
+Exec=/opt/beyondcompare/x86_64/4.1.9.21719/bin/bcompare
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Development
+Icon=/opt/beyondcompare/x86_64/4.1.9.21719/share/pixmaps/bcomparefull32.png
+X-Desktop-File-Install-Version=0.15
