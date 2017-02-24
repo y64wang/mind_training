@@ -16,7 +16,7 @@ def print_arithm(num):
     y = myrandoms[idx+1]
     if myops[idx/2] == 0:
       if  x + y > num:
-        y = random.randint(0, num - x)
+        y = random.randint(1, num - x)
       print "%2d "%x + " +" + " %2d"%y + " =\t",
     else:
       if myrandoms[idx] < myrandoms[idx+1]:
@@ -26,6 +26,9 @@ def print_arithm(num):
 
     if (idx/2 + 1)%3 == 0:
       print ""
+
+  print""
+
 
 def main(argv):
   num = 10
