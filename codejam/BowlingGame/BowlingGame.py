@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# lte codejame contest, author Wang Yong (10249631)
 
 import sys, getopt
 
