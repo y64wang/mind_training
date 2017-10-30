@@ -132,18 +132,18 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv,"hi:")
     except getopt.GetoptError:
-        print 'usage: BowlingGame.py -i <inputfile>'
+        print 'usage: BigData.py -i <inputfile>'
         sys.exit(2)
     optFound = False;
     for opt, arg in opts:
         if opt == '-h':
-            print 'usage: BowlingGame.py -i <inputfile>'
+            print 'usage: BigData.py -i <inputfile>'
             sys.exit()
         elif opt in ("-i"):
             inFileName = arg
             optFound = True;
     if not optFound:
-        print 'usage: BowlingGame.py -i <inputfile>'
+        print 'usage: BigData.py -i <inputfile>'
         sys.exit(2)
 
     outFileName = inFileName + "_Output"
