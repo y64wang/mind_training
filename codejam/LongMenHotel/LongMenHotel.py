@@ -3,8 +3,23 @@
 
 import sys, getopt
 
-def CheckCatchup(info, longMenMap):
+def CheckRoute(info, longMenMap):
     result = "YES"
+
+    for i in range(int(info[1])):
+        L_Idx = [ j for j,x in enumerate(longMenMap[i]) if x == 'L' ]
+        if not L_Idx == []:
+            L_Idx.insert(0, i)
+            break
+
+    for i in range(int(info[1])):
+        Z_Idx = [ j for j,x in enumerate(longMenMap[i]) if x == 'Z' ]
+        if not Z_Idx == []:
+            Z_Idx.insert(0, i)
+            break
+
+    print L_Idx
+    print Z_Idx
 
     return result
 
@@ -34,10 +49,10 @@ def main(argv):
                 info = inFileHandle.readline().split(' ')
                 longMenMap = []
                 for i in range(int(info[1])):
-                    line = inFileHandle.readline().split(' ')
+                    line = inFileHandle.readline().strip('\n')
+                    line = line.split(' ')
                     longMenMap.append(line)
-                print info[0] + " " + info[1] + " " + info[2]
-                print longMenMap[0][0]
+                CheckRoute(info, longMenMap)
                 #outFileHandle.write(result + "\n")
 
 if __name__ == "__main__":
