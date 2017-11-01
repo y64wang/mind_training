@@ -3,6 +3,39 @@
 
 import sys, getopt
 
+MAXPRICE = 9999
+
+def FindMinPositiveNum(list):
+    minval = MAXPRICE
+    for x in list:
+        if minval > x and not x==0:
+            minval = x
+    return minval
+
+def FindBestCombine(leftBooks):
+    combineNum = [0 for i in range(5)]
+    combineNum[4] = min(leftBooks)
+    leftBooks = [i - combineNum[4] for i in leftBooks]
+
+    numof0 = leftBooks.count(0)
+    while numof0 < 5:
+        combineNum[4-numof0] = FindMinPositiveNum(leftBooks)
+        for i,x in enumerate(leftBooks):
+            if not x == 0:
+                leftBooks[i] = x - combineNum[4-numof0]
+        numof0 = leftBooks.count(0)
+
+    minval = min( combineNum[2], combineNum[4])
+    if not minval == 0:
+        combineNum[2] -= minval
+        combineNum[4] -= minval
+        combineNum[3] += minval * 2
+    
+    bestPrice =  combineNum[0] * 8 + combineNum[1] * 2 * 7.6 +  \
+                 combineNum[2] * 3 * 7.2 + combineNum[3] * 4 * 6.4 +  \
+                 combineNum[4] * 5 * 6 
+    return bestPrice
+
 
 def main(argv):
     try:
@@ -26,16 +59,13 @@ def main(argv):
     with open(inFileName, 'r') as inFileHandle:
         with open(outFileName, 'w') as outFileHandle:
             numCases = int(inFileHandle.readline())
+            outFileHandle.write(str(numCases)+ "\n") 
             for caseNo in range(numCases):
                 line = inFileHandle.readline()
-                num1 = line.count("1")
-                num2 = line.count("2")
-                num3 = line.count("3")
-                num4 = line.count("4")
-                num5 = line.count("5")
-                print "1: " + str(num1) + " 2: " + str(num2) + " 3: " + str(num3) + \
-                        " 4: " + str(num4) + " 5: " + str(num5)
-                #outFileHandle.write("Case #" + str(caseNo+1) + ": " + res + "\n") 
+                leftBooks = [line.count("1"), line.count("2"), line.count("3"),   \
+                             line.count("4"), line.count("5")]
+                bestPrice = FindBestCombine(leftBooks)
+                outFileHandle.write(str(bestPrice) + "\n") 
 
 if __name__ == "__main__":
   main(sys.argv[1:])
