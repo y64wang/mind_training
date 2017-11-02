@@ -7,7 +7,7 @@ MAXDIST = 999
 
 def Dijkstra(start, distMap):
     nodeNum = len(distMap)
-    shortPath = [0 for i in range(nodeNum)]
+    shortPath = [MAXDIST for i in range(nodeNum)]
     visited = [False for i in range(nodeNum)]
 
     shortPath[start] = 0
@@ -32,15 +32,12 @@ def Dijkstra(start, distMap):
                     distMap[start][node] = sumDist
 
     return shortPath
-        
-
-    
 
 def CheckRoute(info, longMenMap):
     result = "NO"
 
     L_Pos = Z_Pos = 0
-    
+
     for i in range(info[1]):
         L_Idx = [ j for j,x in enumerate(longMenMap[i]) if x== 'L' ]
         if not L_Idx == []:
@@ -50,7 +47,7 @@ def CheckRoute(info, longMenMap):
     for i in range(info[1]):
         Z_Idx = [ j for j,x in enumerate(longMenMap[i]) if x== 'Z' ]
         if not Z_Idx == []:
-            Z_Pos = i * info[0] + Z_Idx[0] 
+            Z_Pos = i * info[0] + Z_Idx[0]
             break;
 
     if L_Idx == []  or Z_Idx == []:
@@ -67,7 +64,10 @@ def CheckRoute(info, longMenMap):
             dest_y = m % info[0]
             dest = longMenMap[dest_x][dest_y]
             if src_x == dest_x and src_y == dest_y:
-                distMap[n].append(0)
+                if src == '*':
+                    distMap[n].append(MAXDIST)
+                else:
+                    distMap[n].append(0)
             elif (src_x == dest_x and abs(src_y - dest_y) == 1) or  \
                  (src_y == dest_y and abs(src_x - dest_x) == 1):
                 if src == '*' or dest == '*':
@@ -77,12 +77,13 @@ def CheckRoute(info, longMenMap):
             else:
                 distMap[n].append(MAXDIST)
 
-    shortPath = Dijkstra(Z_Pos, distMap) 
+    shortPath = Dijkstra(Z_Pos, distMap)
 
     if shortPath[L_Pos] > info[2]:
         result = "NO"
     else:
         result = "YES"
+
     return result
 
 def main(argv):
@@ -116,7 +117,7 @@ def main(argv):
                     line = line.split(' ')
                     longMenMap.append(line)
                 res = CheckRoute(info, longMenMap)
-                outFileHandle.write("Case #" + str(caseNo+1) + ": " + res + "\n") 
+                outFileHandle.write("Case #" + str(caseNo+1) + ": " + res + "\n")
 
 if __name__ == "__main__":
   main(sys.argv[1:])

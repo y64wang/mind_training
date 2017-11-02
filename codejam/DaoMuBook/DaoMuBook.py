@@ -12,6 +12,12 @@ def FindMinPositiveNum(list):
             minval = x
     return minval
 
+def CalculatePrice(combineNum):
+    price =  combineNum[0] * 8 + combineNum[1] * 2 * 7.6 +  \
+                 combineNum[2] * 3 * 7.2 + combineNum[3] * 4 * 6.4 +  \
+                 combineNum[4] * 5 * 6
+    return price
+
 def FindBestCombine(leftBooks):
     combineNum = [0 for i in range(5)]
     combineNum[4] = min(leftBooks)
@@ -30,10 +36,8 @@ def FindBestCombine(leftBooks):
         combineNum[2] -= minval
         combineNum[4] -= minval
         combineNum[3] += minval * 2
-    
-    bestPrice =  combineNum[0] * 8 + combineNum[1] * 2 * 7.6 +  \
-                 combineNum[2] * 3 * 7.2 + combineNum[3] * 4 * 6.4 +  \
-                 combineNum[4] * 5 * 6 
+
+    bestPrice = CalculatePrice(combineNum)
     return bestPrice
 
 
@@ -59,13 +63,14 @@ def main(argv):
     with open(inFileName, 'r') as inFileHandle:
         with open(outFileName, 'w') as outFileHandle:
             numCases = int(inFileHandle.readline())
-            outFileHandle.write(str(numCases)+ "\n") 
+            outFileHandle.write(str(numCases)+ "\n")
             for caseNo in range(numCases):
                 line = inFileHandle.readline()
                 leftBooks = [line.count("1"), line.count("2"), line.count("3"),   \
                              line.count("4"), line.count("5")]
                 bestPrice = FindBestCombine(leftBooks)
-                outFileHandle.write(str(bestPrice) + "\n") 
+
+                outFileHandle.write(("%.1f" % bestPrice).rstrip('0').rstrip('.') + "\n")
 
 if __name__ == "__main__":
   main(sys.argv[1:])
