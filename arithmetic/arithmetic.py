@@ -3,13 +3,15 @@
 import sys, getopt
 import random
 
+MAXCOL = 5
+MAXCOUNT = 100
+MAXNUM = 100
+
 def print_arithm(num):
 
-  myrandoms = [random.randrange(0,num,1) for _ in range (120)]
-  while myrandoms.count(0) >= 9:
-    myrandoms = [random.randrange(0,num,1) for _ in range (120)]
+  myrandoms = [random.randrange(1,num,1) for _ in range (2*MAXCOUNT)]
 
-  myops = [random.randint(0,1) for _ in range (60)]
+  myops = [random.randint(0,1) for _ in range (MAXCOUNT)]
 
   for idx in range(0, len(myrandoms), 2):
     x = myrandoms[idx]
@@ -24,14 +26,14 @@ def print_arithm(num):
         y = myrandoms[idx]
       print "%2d "%x + " -" + " %2d"%y + " =\t",
 
-    if (idx/2 + 1)%3 == 0:
+    if (idx/2 + 1)%MAXCOL == 0:
       print ""
 
   print""
 
 
 def main(argv):
-  num = 10
+  num = MAXNUM
   try:
     opts, args = getopt.getopt(argv,"hn:")
   except getopt.GetoptError:
