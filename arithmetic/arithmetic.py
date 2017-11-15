@@ -7,33 +7,30 @@ MAXCOL = 5
 MAXCOUNT = 100
 MAXNUM = 100
 
-def print_arithm(num):
-
-  myrandoms = [random.randrange(1,num,1) for _ in range (2*MAXCOUNT)]
+def print_arithm():
 
   myops = [random.randint(0,1) for _ in range (MAXCOUNT)]
 
-  for idx in range(0, len(myrandoms), 2):
-    x = myrandoms[idx]
-    y = myrandoms[idx+1]
+  for idx in range(MAXCOUNT):
     if myops[idx/2] == 0:
-      if  x + y > num:
-        y = random.randint(1, num - x)
-      print "%2d "%x + " +" + " %2d"%y + " =\t",
+        sum = random.randint(21, MAXCOUNT - 1)
+        x = random.randint(11, sum - 5)
+        y = sum - x
+        print "%2d "%x + "+" + " %2d"%y + " =\t\t",
     else:
-      if myrandoms[idx] < myrandoms[idx+1]:
-        x = myrandoms[idx + 1]
-        y = myrandoms[idx]
-      print "%2d "%x + " -" + " %2d"%y + " =\t",
+        x = random.randint(11, MAXCOUNT - 1)
+        y = random.randint(5, x - 1)
+        print "%2d "%x + "-" + " %2d"%y + " =\t\t",
 
-    if (idx/2 + 1)%MAXCOL == 0:
+    if (idx + 1)%MAXCOL == 0:
       print ""
 
+  print""
   print""
 
 
 def main(argv):
-  num = MAXNUM
+  num = 10
   try:
     opts, args = getopt.getopt(argv,"hn:")
   except getopt.GetoptError:
@@ -46,7 +43,10 @@ def main(argv):
     elif opt in ("-n"):
       num = int(arg)
 
-  print_arithm(num)
+  for x in range(num):
+    print_arithm()
+    #if (x+1)%2 == 0:
+    #    print "\f"
 
 if __name__ == "__main__":
   main(sys.argv[1:])
