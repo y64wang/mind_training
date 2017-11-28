@@ -6,21 +6,25 @@ import random
 MAXCOL = 5
 MAXCOUNT = 100
 MAXNUM = 100
+MUL_ENABLED = 1
 
 def print_arithm():
 
-  myops = [random.randint(0,1) for _ in range (MAXCOUNT)]
-
   for idx in range(MAXCOUNT):
-    if myops[idx/2] == 0:
-        sum = random.randint(21, MAXCOUNT - 1)
+    ops = random.randint(0, 1 + MUL_ENABLED)
+    if ops == 0:
+        sum = random.randint(21, MAXNUM - 1)
         x = random.randint(11, sum - 5)
         y = sum - x
-        print "%2d "%x + "+" + " %2d"%y + " =\t\t",
-    else:
-        x = random.randint(11, MAXCOUNT - 1)
+        print "%3d "%x + "+" + " %3d"%y + " =\t\t",
+    elif ops == 1:
+        x = random.randint(11, MAXNUM - 1)
         y = random.randint(5, x - 1)
-        print "%2d "%x + "-" + " %2d"%y + " =\t\t",
+        print "%3d "%x + "-" + " %3d"%y + " =\t\t",
+    else:
+        x = random.randint(1, 9)
+        y = random.randint(1, 9)
+        print "%3d "%x + "x" + " %3d"%y + " =\t\t",
 
     if (idx + 1)%MAXCOL == 0:
       print ""
