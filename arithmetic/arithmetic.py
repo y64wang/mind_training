@@ -6,9 +6,11 @@ import random
 MAXCOL = 5
 MAXCOUNT = 100
 MAXNUM = 100
-MUL_ENABLED = 1
+MUL_ENABLED = 0
 
 def print_arithm():
+
+  print""
 
   for idx in range(MAXCOUNT):
     ops = random.randint(0, 1 + MUL_ENABLED)
@@ -30,11 +32,10 @@ def print_arithm():
       print ""
 
   print""
-  print""
 
 
 def main(argv):
-  num = 10
+  num = 20
   try:
     opts, args = getopt.getopt(argv,"hn:")
   except getopt.GetoptError:
