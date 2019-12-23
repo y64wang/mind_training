@@ -19,7 +19,7 @@ fi
 
 if [[ ! -z $2 ]]; then
     echo "UL_PHY_LF tag: $2"
-    ECL_UL_PHY_LF="/isource/svnroot/BTS_SC_UL_PHY/lf/branches/promoted/$2"
+    ECL_UL_PHY_LF="/isource/svnroot/BTS_SC_UL_PHY/$2"
     svn info https://svne1.access.nsn.com/$ECL_UL_PHY_LF > /dev/null 2>&1
     status=`echo $?` ; if [[ ! ${status} == 0 ]]; then echo "Error UL_PHY_LF tag: $2" ; exit 1 ; fi
 fi
