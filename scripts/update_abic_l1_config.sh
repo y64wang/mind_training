@@ -26,7 +26,7 @@ fi
 
 if [[ ! -z $3 ]]; then
     echo "DL_PHY_LF tag: $3"
-    ECL_DL_PHY_LF="/isource/svnroot/BTS_SC_PHY_TX/tags/$3"
+    ECL_DL_PHY_LF="/isource/svnroot/BTS_SC_PHY_TX/$3"
     svn info https://svne1.access.nsn.com/$ECL_DL_PHY_LF > /dev/null 2>&1
     status=`echo $?` ; if [[ ! ${status} == 0 ]]; then echo "Error DL_PHY_LF tag: $3" ; exit 1 ; fi
 fi
